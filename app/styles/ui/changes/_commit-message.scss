@@ -30,7 +30,13 @@
     &.with-trailing-icon input {
       padding-right: 20px;
     }
-
+    .commit-section-w-opentree {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin: 10px;
+    }
     .length-hint,
     .commit-message-failure-hint {
       $distanceFromEdge: 2px;

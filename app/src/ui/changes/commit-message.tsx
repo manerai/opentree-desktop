@@ -55,6 +55,7 @@ import { RepoRulesetsForBranchLink } from '../repository-rules/repo-rulesets-for
 import { RepoRulesMetadataFailureList } from '../repository-rules/repo-rules-failure-list'
 import { formatCommitMessage } from '../../lib/format-commit-message'
 import { useRepoRulesLogic } from '../../lib/helpers/repo-rules'
+import { OpenTree } from '../opentree/open-tree'
 
 const addAuthorIcon: OcticonSymbolVariant = {
   w: 18,
@@ -1214,22 +1215,31 @@ export class CommitMessage extends React.Component<
     const loading = isCommitting ? <Loading /> : undefined
     const tooltip = this.getButtonTooltip(buttonEnabled)
     const commitButton = this.getButtonText()
-
+    // ARTYOM
     return (
-      <Button
-        type="submit"
-        className="commit-button"
-        onClick={this.onSubmit}
-        disabled={!buttonEnabled}
-        tooltip={tooltip}
-        tooltipDismissable={false}
-        onlyShowTooltipWhenOverflowed={buttonEnabled}
-      >
-        <>
-          {loading}
-          {commitButton}
-        </>
-      </Button>
+      <div className="commit-section-w-opentree">
+        {/* OpenTree Observer */}
+        <OpenTree
+          isCommitting={isCommitting}
+          repository={this.props.repository}
+        />
+
+        {/* Commit Button */}
+        <Button
+          type="submit"
+          className="commit-button"
+          onClick={this.onSubmit}
+          disabled={!buttonEnabled}
+          tooltip={tooltip}
+          tooltipDismissable={false}
+          onlyShowTooltipWhenOverflowed={buttonEnabled}
+        >
+          <>
+            {loading}
+            {commitButton}
+          </>
+        </Button>
+      </div>
     )
   }
 
