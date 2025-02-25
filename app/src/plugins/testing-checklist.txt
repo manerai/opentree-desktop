@@ -1,0 +1,28 @@
+ENTRYPOINT FOR OPENTREE PLUGIN
+
+in the app/src/ui/changes/commit-message.tsx folder
+
+include the opentree module in the commit-message.tsx file:
+import { OpenTree } from '../../plugins/ui/open-tree'
+
+incldue it in the button component:
+ <div>
+        <OpenTree
+          isCommitting={isCommitting}
+          repository={this.props.repository}
+        />
+        <Button
+          type="submit"
+          className="commit-button"
+          onClick={this.onSubmit}
+          disabled={!buttonEnabled}
+          tooltip={tooltip}
+          tooltipDismissable={false}
+          onlyShowTooltipWhenOverflowed={buttonEnabled}
+        >
+          <>
+            {loading}
+            {commitButton}
+          </>
+        </Button>
+</div>
